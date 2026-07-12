@@ -3,7 +3,7 @@
 > **Note:** This SDK is automatically generated from the Autorender API specification.
 > Code pull requests are not accepted — changes to generated code will be overwritten on the next generation cycle.
 >
-> **Bug reports and feature requests are welcome** — please [open an issue](https://github.com/autorenderhq/autorender-ruby/issues).
+> **Bug reports and feature requests are welcome** — please [open an issue](https://github.com/autorender/autorender-ruby/issues).
 
 ---
 
@@ -52,13 +52,13 @@ If you’d like to use the repository from source, you can either install from g
 To install via git in your `Gemfile`:
 
 ```ruby
-gem "autorender", git: "https://github.com/autorenderhq/autorender-ruby"
+gem "autorender", git: "https://github.com/autorender/autorender-ruby"
 ```
 
 Alternatively, reference local copy of the repo:
 
 ```bash
-$ git clone -- 'https://github.com/autorenderhq/autorender-ruby' '<path-to-repo>'
+$ git clone -- 'https://github.com/autorender/autorender-ruby' '<path-to-repo>'
 ```
 
 ```ruby
