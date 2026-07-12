@@ -10,7 +10,7 @@ permissions:
 
 jobs:
   release-please:
-    if: github.repository == 'autorenderhq/autorender-ruby'
+    if: github.repository == 'autorender/autorender-ruby'
     runs-on: ubuntu-latest
 
     steps:

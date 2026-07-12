@@ -1,6 +1,6 @@
 # Autorender Ruby API library
 
-The Autorender Ruby library provides convenient access to the Autorender REST API from any Ruby 3.2.0+ application. It ships with comprehensive types & docstrings in Yard, RBS, and RBI – [see below](https://github.com/autorenderhq/autorender-ruby#Sorbet) for usage with Sorbet. The standard library's `net/http` is used as the HTTP transport, with connection pooling via the `connection_pool` gem.
+The Autorender Ruby library provides convenient access to the Autorender REST API from any Ruby 3.2.0+ application. It ships with comprehensive types & docstrings in Yard, RBS, and RBI – [see below](https://github.com/autorender/autorender-ruby#Sorbet) for usage with Sorbet. The standard library's `net/http` is used as the HTTP transport, with connection pooling via the `connection_pool` gem.
 
 ## Documentation
 
@@ -261,4 +261,4 @@ Ruby 3.2.0 or higher.
 
 ## Contributing
 
-See [the contributing documentation](https://github.com/autorenderhq/autorender-ruby/tree/main/CONTRIBUTING.md).
+See [the contributing documentation](https://github.com/autorender/autorender-ruby/tree/main/CONTRIBUTING.md).

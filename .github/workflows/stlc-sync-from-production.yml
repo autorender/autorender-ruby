@@ -12,9 +12,9 @@ permissions:
 jobs:
   sync:
     runs-on: ubuntu-latest
-    if: github.repository == 'autorenderhq/autorender-ruby-staging'
+    if: github.repository == 'autorender/autorender-ruby-staging'
     env:
-      PRODUCTION_REPO: autorenderhq/autorender-ruby
+      PRODUCTION_REPO: autorender/autorender-ruby
     steps:
       - name: Check out staging
         uses: actions/checkout@v4
