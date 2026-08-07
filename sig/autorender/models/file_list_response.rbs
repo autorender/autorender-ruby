@@ -2,158 +2,99 @@ module Autorender
   module Models
     type file_list_response =
       {
-        files: ::Array[Autorender::Models::FileListResponse::File],
-        meta: Autorender::Models::FileListResponse::Meta
+        id: String,
+        created_at: Time,
+        file_no: String,
+        folder_name: String?,
+        folder_no: String?,
+        format_: String?,
+        height: Integer?,
+        metadata: ::Hash[Symbol, top]?,
+        mime_type: String,
+        name: String,
+        path: String,
+        size: Integer,
+        source: String,
+        tags: ::Array[String],
+        updated_at: Time?,
+        url: String,
+        width: Integer?
       }
 
     class FileListResponse < Autorender::Internal::Type::BaseModel
-      attr_accessor files: ::Array[Autorender::Models::FileListResponse::File]
+      attr_accessor id: String
 
-      attr_accessor meta: Autorender::Models::FileListResponse::Meta
+      attr_accessor created_at: Time
+
+      attr_accessor file_no: String
+
+      attr_accessor folder_name: String?
+
+      attr_accessor folder_no: String?
+
+      attr_accessor format_: String?
+
+      attr_accessor height: Integer?
+
+      attr_accessor metadata: ::Hash[Symbol, top]?
+
+      attr_accessor mime_type: String
+
+      attr_accessor name: String
+
+      attr_accessor path: String
+
+      attr_accessor size: Integer
+
+      attr_accessor source: String
+
+      attr_accessor tags: ::Array[String]
+
+      attr_accessor updated_at: Time?
+
+      attr_accessor url: String
+
+      attr_accessor width: Integer?
 
       def initialize: (
-        files: ::Array[Autorender::Models::FileListResponse::File],
-        meta: Autorender::Models::FileListResponse::Meta
+        id: String,
+        created_at: Time,
+        file_no: String,
+        folder_name: String?,
+        folder_no: String?,
+        format_: String?,
+        height: Integer?,
+        metadata: ::Hash[Symbol, top]?,
+        mime_type: String,
+        name: String,
+        path: String,
+        size: Integer,
+        source: String,
+        tags: ::Array[String],
+        updated_at: Time?,
+        url: String,
+        width: Integer?
       ) -> void
 
       def to_hash: -> {
-        files: ::Array[Autorender::Models::FileListResponse::File],
-        meta: Autorender::Models::FileListResponse::Meta
+        id: String,
+        created_at: Time,
+        file_no: String,
+        folder_name: String?,
+        folder_no: String?,
+        format_: String?,
+        height: Integer?,
+        metadata: ::Hash[Symbol, top]?,
+        mime_type: String,
+        name: String,
+        path: String,
+        size: Integer,
+        source: String,
+        tags: ::Array[String],
+        updated_at: Time?,
+        url: String,
+        width: Integer?
       }
-
-      type file =
-        {
-          id: String,
-          created_at: Time,
-          file_no: String,
-          folder_name: String?,
-          folder_no: String?,
-          format_: String?,
-          height: Integer?,
-          metadata: ::Hash[Symbol, top]?,
-          mime_type: String,
-          name: String,
-          path: String,
-          size: Integer,
-          source: String,
-          tags: ::Array[String],
-          updated_at: Time?,
-          url: String,
-          width: Integer?
-        }
-
-      class File < Autorender::Internal::Type::BaseModel
-        attr_accessor id: String
-
-        attr_accessor created_at: Time
-
-        attr_accessor file_no: String
-
-        attr_accessor folder_name: String?
-
-        attr_accessor folder_no: String?
-
-        attr_accessor format_: String?
-
-        attr_accessor height: Integer?
-
-        attr_accessor metadata: ::Hash[Symbol, top]?
-
-        attr_accessor mime_type: String
-
-        attr_accessor name: String
-
-        attr_accessor path: String
-
-        attr_accessor size: Integer
-
-        attr_accessor source: String
-
-        attr_accessor tags: ::Array[String]
-
-        attr_accessor updated_at: Time?
-
-        attr_accessor url: String
-
-        attr_accessor width: Integer?
-
-        def initialize: (
-          id: String,
-          created_at: Time,
-          file_no: String,
-          folder_name: String?,
-          folder_no: String?,
-          format_: String?,
-          height: Integer?,
-          metadata: ::Hash[Symbol, top]?,
-          mime_type: String,
-          name: String,
-          path: String,
-          size: Integer,
-          source: String,
-          tags: ::Array[String],
-          updated_at: Time?,
-          url: String,
-          width: Integer?
-        ) -> void
-
-        def to_hash: -> {
-          id: String,
-          created_at: Time,
-          file_no: String,
-          folder_name: String?,
-          folder_no: String?,
-          format_: String?,
-          height: Integer?,
-          metadata: ::Hash[Symbol, top]?,
-          mime_type: String,
-          name: String,
-          path: String,
-          size: Integer,
-          source: String,
-          tags: ::Array[String],
-          updated_at: Time?,
-          url: String,
-          width: Integer?
-        }
-      end
-
-      type meta =
-        {
-          has_next: bool,
-          has_prev: bool,
-          limit: Integer,
-          page: Integer,
-          total: Integer
-        }
-
-      class Meta < Autorender::Internal::Type::BaseModel
-        attr_accessor has_next: bool
-
-        attr_accessor has_prev: bool
-
-        attr_accessor limit: Integer
-
-        attr_accessor page: Integer
-
-        attr_accessor total: Integer
-
-        def initialize: (
-          has_next: bool,
-          has_prev: bool,
-          limit: Integer,
-          page: Integer,
-          total: Integer
-        ) -> void
-
-        def to_hash: -> {
-          has_next: bool,
-          has_prev: bool,
-          limit: Integer,
-          page: Integer,
-          total: Integer
-        }
-      end
     end
   end
 end

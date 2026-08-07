@@ -10,27 +10,21 @@ module Autorender
     #   end
     #
     # @example
-    #   page_pagination.auto_paging_each do |item|
-    #     puts(item)
+    #   page_pagination.auto_paging_each do |file|
+    #     puts(file)
     #   end
     class PagePagination
       include Autorender::Internal::Type::BasePage
 
       # @return [Array<generic<Elem>>, nil]
-      attr_accessor :data
+      attr_accessor :files
 
-      # @return [Integer]
-      attr_accessor :current_page
-
-      # @return [Boolean]
-      attr_accessor :has_next
-
-      # @return [Integer]
-      attr_accessor :total_results
+      # @return [Meta]
+      attr_accessor :meta
 
       # @return [Boolean]
       def next_page?
-        !data.to_a.empty?
+        meta&.has_next
       end
 
       # @raise [Autorender::HTTP::Error]
@@ -41,7 +35,7 @@ module Autorender
           raise RuntimeError.new(message)
         end
 
-        req = Autorender::Internal::Util.deep_merge(@req, {query: {page: (current_page || 1).to_i.succ}})
+        req = Autorender::Internal::Util.deep_merge(@req, {query: {page: (meta&.page || 1).to_i.succ}})
         @client.request(req)
       end
 
@@ -55,7 +49,7 @@ module Autorender
 
         page = self
         loop do
-          page.data&.each(&blk)
+          page.files&.each(&blk)
 
           break unless page.next_page?
           page = page.next_page
@@ -72,24 +66,43 @@ module Autorender
         super
 
         case page_data
-        in {data: Array => data}
-          @data = data.map { Autorender::Internal::Type::Converter.coerce(@model, _1) }
+        in {files: Array => files}
+          @files = files.map { Autorender::Internal::Type::Converter.coerce(@model, _1) }
         else
         end
-        @current_page = page_data[:current_page]
-        @has_next = page_data[:has_next]
-        @total_results = page_data[:total_results]
+        case page_data
+        in {meta: Hash | nil => meta}
+          @meta = Autorender::Internal::Type::Converter.coerce(
+            Autorender::Internal::PagePagination::Meta,
+            meta
+          )
+        else
+        end
       end
 
       # @api private
       #
       # @return [String]
       def inspect
-        # rubocop:disable Layout/LineLength
         model = Autorender::Internal::Type::Converter.inspect(@model, depth: 1)
 
-        "#<#{self.class}[#{model}]:0x#{object_id.to_s(16)} current_page=#{current_page.inspect} has_next=#{has_next.inspect} total_results=#{total_results.inspect}>"
-        # rubocop:enable Layout/LineLength
+        "#<#{self.class}[#{model}]:0x#{object_id.to_s(16)}>"
+      end
+
+      class Meta < Autorender::Internal::Type::BaseModel
+        # @!attribute has_next
+        #
+        #   @return [Boolean, nil]
+        optional :has_next, Autorender::Internal::Type::Boolean, api_name: :hasNext
+
+        # @!attribute page
+        #
+        #   @return [Integer, nil]
+        optional :page, Integer
+
+        # @!method initialize(has_next: nil, page: nil)
+        #   @param has_next [Boolean]
+        #   @param page [Integer]
       end
     end
   end
