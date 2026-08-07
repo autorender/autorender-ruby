@@ -15,7 +15,7 @@ To use this gem, install via Bundler by adding the following to your application
 <!-- x-release-please-start-version -->
 
 ```ruby
-gem "autorender", "~> 0.0.1"
+gem "autorender", "~> 0.2.1"
 ```
 
 <!-- x-release-please-end -->
