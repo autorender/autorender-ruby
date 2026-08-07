@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.2.2](https://github.com/autorender/autorender-ruby/compare/v0.2.1...v0.2.2) (2026-07-12)
+
+
+### Chores
+
+* rename autorenderhq -&gt; autorender references (GitHub org rename) ([#11](https://github.com/autorender/autorender-ruby/issues/11)) ([36a12a6](https://github.com/autorender/autorender-ruby/commit/36a12a61bf4824ce266a5294911f74cd3075da6a))
+
 ## [0.2.1](https://github.com/autorender/autorender-ruby/compare/v0.2.0...v0.2.1) (2026-06-29)
 
 
