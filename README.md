@@ -6,7 +6,7 @@ The Autorender Ruby library provides convenient access to the Autorender REST AP
 
 Documentation for releases of this gem can be found [on RubyDoc](https://gemdocs.org/gems/autorender).
 
-The REST API documentation can be found on [autorender.mintlify.app](https://autorender.mintlify.app/).
+The REST API documentation can be found on [autorender.io](https://autorender.io/docs).
 
 ## Installation
 
@@ -30,9 +30,37 @@ autorender = Autorender::Client.new(
   api_key: ENV["AUTORENDER_API_KEY"] # This is the default and can be omitted
 )
 
-files = autorender.files.list(limit: 10)
+page = autorender.files.list(limit: 10)
 
-puts(files.files)
+puts(page.id)
+```
+
+### Pagination
+
+List methods in the Autorender API are paginated.
+
+This library provides auto-paginating iterators with each list response, so you do not have to request successive pages manually:
+
+```ruby
+page = autorender.files.list
+
+# Fetch single item from page.
+file = page.files[0]
+puts(file.id)
+
+# Automatically fetches more pages as needed.
+page.auto_paging_each do |file|
+  puts(file.id)
+end
+```
+
+Alternatively, you can use the `#next_page?` and `#next_page` methods for more granular control working with pages.
+
+```ruby
+if page.next_page?
+  new_page = page.next_page
+  puts(new_page.files[0].id)
+end
 ```
 
 ### File uploads

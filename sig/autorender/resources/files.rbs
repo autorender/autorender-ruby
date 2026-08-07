@@ -13,7 +13,7 @@ module Autorender
         ?search: String,
         ?sort: Autorender::Models::FileListParams::sort,
         ?request_options: Autorender::request_opts
-      ) -> Autorender::Models::FileListResponse
+      ) -> Autorender::Internal::PagePagination[Autorender::Models::FileListResponse]
 
       def delete: (
         String file_no,

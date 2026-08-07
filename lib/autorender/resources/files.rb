@@ -39,7 +39,7 @@ module Autorender
       #
       # @param request_options [Autorender::RequestOptions, Hash{Symbol=>Object}, nil]
       #
-      # @return [Autorender::Models::FileListResponse]
+      # @return [Autorender::Internal::PagePagination<Autorender::Models::FileListResponse>]
       #
       # @see Autorender::Models::FileListParams
       def list(params = {})
@@ -49,6 +49,7 @@ module Autorender
           method: :get,
           path: "api/v1/files",
           query: query,
+          page: Autorender::Internal::PagePagination,
           model: Autorender::Models::FileListResponse,
           options: options
         )

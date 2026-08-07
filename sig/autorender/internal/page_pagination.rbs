@@ -3,15 +3,26 @@ module Autorender
     class PagePagination[Elem]
       include Autorender::Internal::Type::BasePage[Elem]
 
-      attr_accessor data: ::Array[Elem]?
+      attr_accessor files: ::Array[Elem]?
 
-      attr_accessor current_page: Integer
-
-      attr_accessor has_next: bool
-
-      attr_accessor total_results: Integer
+      attr_accessor meta: Meta
 
       def inspect: -> String
+
+      type meta = { has_next: bool, page: Integer }
+      class Meta < Autorender::Internal::Type::BaseModel
+        attr_reader has_next: bool?
+
+        def has_next=: (bool) -> bool
+
+        attr_reader page: Integer?
+
+        def page=: (Integer) -> Integer
+
+        def initialize: (?has_next: bool, ?page: Integer) -> void
+
+        def to_hash: -> { has_next: bool, page: Integer }
+      end
     end
   end
 end

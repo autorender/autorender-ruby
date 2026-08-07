@@ -23,7 +23,11 @@ module Autorender
           search: String,
           sort: Autorender::FileListParams::Sort::OrSymbol,
           request_options: Autorender::RequestOptions::OrHash
-        ).returns(Autorender::Models::FileListResponse)
+        ).returns(
+          Autorender::Internal::PagePagination[
+            Autorender::Models::FileListResponse
+          ]
+        )
       end
       def list(
         # Filter by folder number

@@ -22,13 +22,35 @@ class Autorender::Test::Resources::FilesTest < Autorender::Test::ResourceTest
     response = @autorender.files.list
 
     assert_pattern do
-      response => Autorender::Models::FileListResponse
+      response => Autorender::Internal::PagePagination
+    end
+
+    row = response.to_enum.first
+    return if row.nil?
+
+    assert_pattern do
+      row => Autorender::Models::FileListResponse
     end
 
     assert_pattern do
-      response => {
-        files: ^(Autorender::Internal::Type::ArrayOf[Autorender::Models::FileListResponse::File]),
-        meta: Autorender::Models::FileListResponse::Meta
+      row => {
+        id: String,
+        created_at: Time,
+        file_no: String,
+        folder_name: String | nil,
+        folder_no: String | nil,
+        format_: String | nil,
+        height: Integer | nil,
+        metadata: ^(Autorender::Internal::Type::HashOf[Autorender::Internal::Type::Unknown]) | nil,
+        mime_type: String,
+        name: String,
+        path: String,
+        size: Integer,
+        source: String,
+        tags: ^(Autorender::Internal::Type::ArrayOf[String]),
+        updated_at: Time | nil,
+        url: String,
+        width: Integer | nil
       }
     end
   end
